@@ -1,25 +1,47 @@
-import logo from './logo.svg';
+import React, {Component} from 'react';
 import './App.css';
+import Header from './components/Header.js';
+import TableRow from './components/TableRow.js';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+class App extends Component {
+
+  constructor(props){
+    super();
+
+    this.state = {
+      info : [
+        { "id" : 1,
+          "name" :"Paco",
+          "age" : "22"
+        },
+        { "id" : 2,
+          "name" :"Jose",
+          "age" : "32"
+        },
+        { "id" : 3,
+          "name" :"Josete",
+          "age" : "42"
+        },
+        { "id" : 4,
+          "name" :"Franciscos",
+          "age" : "52"
+        }
+      ]
+    }
+  }
+
+  render(){
+    return (
+      <div>
+        <Header />
+        <table border="1">
+          <tbody>
+          {this.state.info.map((person, i) => <TableRow key={i} data={person} />)}
+          </tbody>
+        </table>
+      </div>
+    );
+  }
 }
 
 export default App;
